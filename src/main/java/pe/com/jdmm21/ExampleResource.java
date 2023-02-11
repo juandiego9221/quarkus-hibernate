@@ -14,8 +14,19 @@ import javax.ws.rs.core.MediaType;
 public class ExampleResource {
     @GET
     public String greeting() {
-        return "Hello, world!";
+        String message ="";
+        message = validationMessage();
+        return message;
     }
 
-    
+    private String validationMessage() {
+        String message;
+        if (true) {
+            message="hola1";
+        }else{
+            message="hola2";
+        }
+        return message;
+    }
+
 }
