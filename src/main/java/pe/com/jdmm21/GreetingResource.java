@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 public class GreetingResource {
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
+    @Produces(MediaType.APPLICATION_JSON)
+    public ExampleResponse hello() {
+        return new ExampleResponse("Hello RESTEasy");
     }
 }
