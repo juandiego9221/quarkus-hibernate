@@ -1,4 +1,4 @@
-package pe.com.jdmm21;
+package pe.com.jdmm21.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
