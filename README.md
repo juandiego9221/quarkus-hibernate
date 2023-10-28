@@ -1,61 +1,38 @@
 # PROYECTO PARA PRUEBAS DE CONCEPTO
 # quarkus-getting-started
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Funcionalidades a impleemntar
 
-## Running the application in dev mode
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+1. **Categorías**:
+   - `GET /categorias`: Listar todas las categorías disponibles para navegar por el contenido.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+2. **Películas**:
+   - `GET /peliculas`: Listar las películas más populares o destacadas.
+   - `GET /peliculas/{pelicula_id}`: Ver detalles y metadatos de una película específica.
+   - `GET /peliculas/categoria/{categoria_id}`: Listar todas las películas de una categoría específica.
+   - `GET /peliculas/director/{director_id}`: Listar todas las películas de un director específico.
 
-## Packaging and running the application
+3. **Directores**:
+   - `GET /directores/{director_id}`: Ver detalles de un director en particular (esto podría incluir su filmografía y un poco de biografía).
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+4. **Búsqueda**:
+   - `GET /buscar?nombre={nombre}`: Buscar películas y/o directores por nombre.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+5. **Recomendaciones**:
+   - `GET /recomendaciones`: Basado en las películas que ha visto o marcado como favoritas el usuario, devolver películas recomendadas.
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+6. **Lista de favoritos**:
+   - `POST /peliculas/{pelicula_id}/favoritos`: Marcar una película como favorita.
+   - `DELETE /peliculas/{pelicula_id}/favoritos`: Desmarcar una película como favorita.
+   - `GET /usuario/favoritos`: Listar las películas que el usuario ha marcado como favoritas.
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+7. **Historial de visualización**:
+   - `GET /usuario/historial`: Ver las películas que el usuario ha visto recientemente.
 
-## Creating a native executable
+8. **Valoraciones**:
+   - `POST /peliculas/{pelicula_id}/valorar`: Añadir una valoración a una película.
+   - `DELETE /peliculas/{pelicula_id}/valorar`: Eliminar o modificar la valoración de una película.
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/quarkus-getting-started-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing JAX-RS and more
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+Estos endpoints se centran más en la experiencia del usuario y en proporcionarle la información que probablemente querría ver o interactuar en una plataforma tipo Netflix.
