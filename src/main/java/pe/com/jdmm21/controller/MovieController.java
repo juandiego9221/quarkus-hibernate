@@ -7,8 +7,8 @@ import javax.ws.rs.core.MediaType;
 
 import pe.com.jdmm21.model.ExampleResponse;
 
-@Path("/hello")
-public class GreetingController {
+@Path("/movies")
+public class MovieController {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
