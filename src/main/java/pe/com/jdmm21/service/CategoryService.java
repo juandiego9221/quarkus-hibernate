@@ -1,4 +1,4 @@
-package pe.com.jdmm21.model;
+package pe.com.jdmm21.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +9,7 @@ import javax.inject.Inject;
 
 import pe.com.jdmm21.dto.CategoryDTO;
 import pe.com.jdmm21.mapper.CategoryMapper;
+import pe.com.jdmm21.model.CategoryEntity;
 
 @ApplicationScoped
 public class CategoryService {

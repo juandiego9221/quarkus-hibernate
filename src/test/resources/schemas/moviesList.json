@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": [
+        {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "integer"
+                },
+                "stars": {
+                    "type": "integer"
+                }
+            },
+            "required": ["id", "name", "year", "stars"]
+        },
+        {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "integer"
+                },
+                "stars": {
+                    "type": "integer"
+                }
+            },
+            "required": ["id", "name", "year", "stars"]
+        }
+    ]
+}

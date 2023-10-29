@@ -6,19 +6,42 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
 public class MovieControllerTest {
 
-    @Disabled
     @Test
-    public void testHelloEndpoint() {
+    void getAllMovies() {
         given()
-                .when().get("/hello")
+                .when().get("/movies")
                 .then()
-                .statusCode(200)
-                .body(is("Hello RESTEasy"));
+                .statusCode(200);
+    }
+
+    // test get movies by id
+    @Test
+    void getMovieById() {
+        given()
+                .when().get("/movies/1")
+                .then()
+                .statusCode(200);
+    }
+
+    // test get a movie by a specific category
+    @Test
+    void getMovieByCategory() {
+        given()
+                .when().get("/movies/categories/1")
+                .then()
+                .statusCode(200);
+    }
+
+    @Test
+    void getMovieByDirector() {
+        given()
+                .when().get("/movies/directors/1")
+                .then()
+                .statusCode(200);
     }
 
 }

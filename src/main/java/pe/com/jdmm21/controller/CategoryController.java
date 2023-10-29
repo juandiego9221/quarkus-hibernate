@@ -11,7 +11,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.eclipse.microprofile.openapi.annotations.tags.Tags;
 
 import pe.com.jdmm21.dto.CategoryDTO;
-import pe.com.jdmm21.model.CategoryService;
+import pe.com.jdmm21.service.CategoryService;
 
 @Path("/categories")
 public class CategoryController {
