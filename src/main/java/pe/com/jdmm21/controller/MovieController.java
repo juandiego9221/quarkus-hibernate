@@ -31,24 +31,24 @@ public class MovieController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public MovieDTO getMovieById() {
-        return movieService.getMovieById();
+    public MovieDTO getMovieById(int id) {
+        return movieService.getMovieById(id);
     }
 
     // implement the getMovieByCategory method
     @GET
     @Path("/categories/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<MovieDTO> getMovieByCategory() {
-        return movieService.getMovieByCategory();
+    public List<MovieDTO> getMovieByCategory(String category) {
+        return movieService.getMovieByCategory(category);
     }
 
     // implement the getMovieByDirector method
     @GET
     @Path("/directors/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<MovieDTO> getMovieByDirector() {
-        return movieService.getMovieByDirector();
+    public List<MovieDTO> getMovieByDirector(String director) {
+        return movieService.getMovieByDirector(director);
     }
 
     // implement the addStarsToMovie method

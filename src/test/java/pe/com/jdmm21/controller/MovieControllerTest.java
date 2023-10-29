@@ -5,6 +5,8 @@ import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+// import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
 public class MovieControllerTest {
@@ -14,7 +16,9 @@ public class MovieControllerTest {
         given()
                 .when().get("/movies")
                 .then()
-                .statusCode(200);
+                .statusCode(200).and()
+                .body("size()", is(3));
+
     }
 
     // test get movies by id

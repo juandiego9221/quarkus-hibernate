@@ -36,41 +36,43 @@ public class MovieService {
         return movieDTOList;
     }
 
-    public MovieDTO getMovieById() {
-        return mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 5));
+    public MovieDTO getMovieById(int id) {
+        MovieEntity movieEntity = em.createQuery("SELECT m FROM MovieEntity m WHERE m.id = :id", MovieEntity.class)
+                .setParameter("id", id).getSingleResult();
+
+        return mapper.toDTO(movieEntity);
     }
 
-    public List<MovieDTO> getMovieByCategory() {
-        List<MovieDTO> dtos = new ArrayList<>();
+    public List<MovieDTO> getMovieByCategory(String category) {
+        List<MovieDTO> movieDTOList = new ArrayList<>();
 
-        // list of movies entities
-        List<MovieEntity> entities = Arrays.asList(new MovieEntity(1, "TheGodfather", 1972, 5),
-                new MovieEntity(2, "The Godfather: Part II", 1974, 5));
+        List<MovieEntity> movieEntityList = em.createQuery("SELECT m FROM MovieEntity m WHERE m.category = :category",
+                MovieEntity.class).setParameter("category", category).getResultList();
 
-        MovieDTO dto = null;
+        MovieDTO movieDTO = null;
 
-        for (MovieEntity movieEntity : entities) {
-            dto = mapper.toDTO(movieEntity);
-            dtos.add(dto);
+        for (MovieEntity movieEntity : movieEntityList) {
+            movieDTO = mapper.toDTO(movieEntity);
+            movieDTOList.add(movieDTO);
         }
-        return dtos;
+        return movieDTOList;
     }
 
-    public List<MovieDTO> getMovieByDirector() {
-        List<MovieDTO> dtos = new ArrayList<>();
+    public List<MovieDTO> getMovieByDirector(String director) {
+        List<MovieDTO> movieDTOList = new ArrayList<>();
 
         // list of movies entities
-        List<MovieEntity> entities = Arrays.asList(new MovieEntity(1, "TheGodfather", 1972, 5),
-                new MovieEntity(2, "The Godfather: Part II", 1974, 5));
+        List<MovieEntity> movieEntityList = em.createQuery("SELECT m FROM MovieEntity m WHERE m.director = :director",
+                MovieEntity.class).setParameter("director", director).getResultList();
 
-        MovieDTO dto = null;
+        MovieDTO movieDTO;
 
-        for (MovieEntity movieEntity : entities) {
-            dto = mapper.toDTO(movieEntity);
-            dtos.add(dto);
+        for (MovieEntity movieEntity : movieEntityList) {
+            movieDTO = mapper.toDTO(movieEntity);
+            movieDTOList.add(movieDTO);
         }
 
-        return dtos;
+        return movieDTOList;
 
     }
 
