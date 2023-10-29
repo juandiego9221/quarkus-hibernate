@@ -17,17 +17,20 @@ public class MovieService {
     @Inject
     MovieMapper mapper;
 
+    @Inject
+    EntityManager em;
 
     public List<MovieDTO> getAllMovies() {
         List<MovieDTO> dtos = new ArrayList<>();
 
-        // List<MovieEntity> entities = em.createQuery("SELECT m FROM MovieEntity m", MovieEntity.class).getResultList();
+        // List<MovieEntity> entities = em.createQuery("SELECT m FROM MovieEntity m",
+        // MovieEntity.class).getResultList();
 
         MovieDTO dto = null;
 
         // for (MovieEntity movieEntity : entities) {
-        //     dto = mapper.toDTO(movieEntity);
-        //     dtos.add(dto);
+        // dto = mapper.toDTO(movieEntity);
+        // dtos.add(dto);
         // }
 
         return dtos;

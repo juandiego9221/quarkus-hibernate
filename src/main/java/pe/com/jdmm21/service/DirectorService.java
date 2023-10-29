@@ -10,8 +10,6 @@ import pe.com.jdmm21.model.DirectorEntity;
 
 @ApplicationScoped
 public class DirectorService {
-    @Inject
-    EntityManager em;
 
     @Inject
     DirectorMapper mapper;
