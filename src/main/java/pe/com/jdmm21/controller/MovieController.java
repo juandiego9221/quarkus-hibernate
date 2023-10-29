@@ -1,10 +1,11 @@
 package pe.com.jdmm21.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.PATCH;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -47,6 +48,22 @@ public class MovieController {
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieDTO> getMovieByDirector() {
         return movieService.getMovieByDirector();
+    }
+
+    // implement the addStarsToMovie method
+    @POST
+    @Path("/{id}/stars/{stars}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public  void addStarsToMovie() {
+        movieService.addStarsToMovie();
+    }
+
+    // implement the updateStarsToMovie method
+    @PATCH
+    @Path("/{id}/stars/{stars}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public MovieDTO updateStarsToMovie() {
+        return movieService.updateStarsToMovie();
     }
 
 }

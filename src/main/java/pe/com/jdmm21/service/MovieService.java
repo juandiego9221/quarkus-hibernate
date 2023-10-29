@@ -76,4 +76,14 @@ public class MovieService {
 
     }
 
+    // add stars to movie
+    public void addStarsToMovie() {
+        mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 5));
+    }
+
+    // update stars to movie
+    public MovieDTO updateStarsToMovie() {
+        return mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 4));
+    }
+
 }

@@ -43,4 +43,22 @@ public class MovieControllerTest {
                 .statusCode(200);
     }
 
+    // test add stars to movie
+    @Test
+    void addStarsToMovie() {
+        given()
+                .when().put("/movies/1/stars/5")
+                .then()
+                .statusCode(200);
+    }
+
+    // test update stars to movie
+    @Test
+    void updateStarsToMovie() {
+        given()
+                .when().patch("/movies/1/stars/5")
+                .then()
+                .statusCode(200);
+    }
+
 }
