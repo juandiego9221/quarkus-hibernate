@@ -2,7 +2,6 @@ package pe.com.jdmm21.service;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import pe.com.jdmm21.dto.DirectorDTO;
 import pe.com.jdmm21.mapper.DirectorMapper;

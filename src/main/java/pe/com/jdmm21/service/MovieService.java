@@ -21,19 +21,19 @@ public class MovieService {
     EntityManager em;
 
     public List<MovieDTO> getAllMovies() {
-        List<MovieDTO> dtos = new ArrayList<>();
+        List<MovieDTO> movieDTOList = new ArrayList<>();
 
-        // List<MovieEntity> entities = em.createQuery("SELECT m FROM MovieEntity m",
-        // MovieEntity.class).getResultList();
+        List<MovieEntity> movieEntityList = em.createQuery("SELECT m FROM MovieEntity m",
+                MovieEntity.class).getResultList();
 
-        MovieDTO dto = null;
+        MovieDTO movieDTO;
 
-        // for (MovieEntity movieEntity : entities) {
-        // dto = mapper.toDTO(movieEntity);
-        // dtos.add(dto);
-        // }
+        for (MovieEntity movieEntity : movieEntityList) {
+            movieDTO = mapper.toDTO(movieEntity);
+            movieDTOList.add(movieDTO);
+        }
 
-        return dtos;
+        return movieDTOList;
     }
 
     public MovieDTO getMovieById() {
