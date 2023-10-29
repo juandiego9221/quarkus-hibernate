@@ -1,4 +1,4 @@
-package pe.com.jdmm21.controller;
+package pe.com.jdmm21;
 
 import javax.ws.rs.core.Application;
 
