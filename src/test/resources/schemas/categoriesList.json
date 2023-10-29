@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "array",
+    "items": [
+        {
+            "type": "object",
+            "properties": {
+                "categoryName": {
+                    "type": "string"
+                },
+                "clasification": {
+                    "type": "string"
+                }
+            },
+            "required": ["categoryName", "clasification"]
+        },
+        {
+            "type": "object",
+            "properties": {
+                "categoryName": {
+                    "type": "string"
+                },
+                "clasification": {
+                    "type": "string"
+                }
+            },
+            "required": ["categoryName", "clasification"]
+        }
+    ]
+}
