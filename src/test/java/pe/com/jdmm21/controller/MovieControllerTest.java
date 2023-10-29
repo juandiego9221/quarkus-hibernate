@@ -47,9 +47,9 @@ public class MovieControllerTest {
     @Test
     void addStarsToMovie() {
         given()
-                .when().put("/movies/1/stars/5")
+                .when().post("/movies/1/stars/5")
                 .then()
-                .statusCode(200);
+                .statusCode(201);
     }
 
     // test update stars to movie
