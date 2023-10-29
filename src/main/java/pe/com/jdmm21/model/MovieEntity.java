@@ -3,6 +3,8 @@ package pe.com.jdmm21.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -25,5 +27,15 @@ public class MovieEntity {
     private int year;
     @Column(name = "estrellas")
     private int stars;
-
+    /*
+     * La relación se establece con la entidad CategoryEntity mediante la
+     * anotación @JoinColumn.
+     * 
+     * La anotación @JoinColumn se utiliza para especificar la columna de la tabla
+     * de la entidad MovieEntity que se utilizará para almacenar la clave externa de
+     * la relación. En este caso, la columna se llama category_id.
+     */
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity category;
 }

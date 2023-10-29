@@ -11,9 +11,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import lombok.extern.slf4j.Slf4j;
 import pe.com.jdmm21.dto.MovieDTO;
 import pe.com.jdmm21.service.MovieService;
 
+@Slf4j
 @Path("/movies")
 public class MovieController {
     // inject movieService
@@ -35,12 +37,11 @@ public class MovieController {
         return movieService.getMovieById(id);
     }
 
-    // implement the getMovieByCategory method
     @GET
     @Path("/categories/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<MovieDTO> getMovieByCategory(String category) {
-        return movieService.getMovieByCategory(category);
+    public List<MovieDTO> example(int id) {
+        log.info("xxxxx");
+        return movieService.getMovieByCategory(id);
     }
 
     // implement the getMovieByDirector method

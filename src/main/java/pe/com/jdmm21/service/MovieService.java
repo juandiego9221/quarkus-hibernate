@@ -1,7 +1,6 @@
 package pe.com.jdmm21.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -43,18 +42,21 @@ public class MovieService {
         return mapper.toDTO(movieEntity);
     }
 
-    public List<MovieDTO> getMovieByCategory(String category) {
+    public List<MovieDTO> getMovieByCategory(int categoryId) {
         List<MovieDTO> movieDTOList = new ArrayList<>();
 
-        List<MovieEntity> movieEntityList = em.createQuery("SELECT m FROM MovieEntity m WHERE m.category = :category",
-                MovieEntity.class).setParameter("category", category).getResultList();
+        List<MovieEntity> movieEntityList = em
+                .createQuery("SELECT m FROM MovieEntity m WHERE m.category.id = :categoryId",
+                        MovieEntity.class)
+                .setParameter("categoryId", categoryId).getResultList();
 
-        MovieDTO movieDTO = null;
+        MovieDTO movieDTO;
 
         for (MovieEntity movieEntity : movieEntityList) {
             movieDTO = mapper.toDTO(movieEntity);
             movieDTOList.add(movieDTO);
         }
+
         return movieDTOList;
     }
 
@@ -78,12 +80,13 @@ public class MovieService {
 
     // add stars to movie
     public void addStarsToMovie() {
-        mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 5));
+        // mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 5));
     }
 
     // update stars to movie
     public MovieDTO updateStarsToMovie() {
-        return mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 4));
+        // return mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 4));
+        return null;
     }
 
 }
