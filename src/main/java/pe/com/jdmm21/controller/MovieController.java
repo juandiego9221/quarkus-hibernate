@@ -3,23 +3,26 @@ package pe.com.jdmm21.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import pe.com.jdmm21.dto.MovieDTO;
+import pe.com.jdmm21.service.MovieService;
 
 @Path("/movies")
 public class MovieController {
-    
+    // inject movieService
+    @Inject
+    MovieService movieService;
 
     // implement the getAllMovies method
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieDTO> getAllMovies() {
-        return Arrays.asList(new MovieDTO(1, "The Godfather", 1972, 5),
-                new MovieDTO(2, "The Godfather: Part II", 1974, 5));
+        return movieService.getAllMovies();
     }
 
     // implement the getMovieById method
@@ -27,7 +30,7 @@ public class MovieController {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public MovieDTO getMovieById() {
-        return new MovieDTO(1, "The Godfather", 1972, 5);
+        return movieService.getMovieById();
     }
 
     // implement the getMovieByCategory method
@@ -35,8 +38,7 @@ public class MovieController {
     @Path("/categories/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieDTO> getMovieByCategory() {
-        return Arrays.asList(new MovieDTO(1, "The Godfather", 1972, 5),
-                new MovieDTO(2, "The Godfather: Part II", 1974, 5));
+        return movieService.getMovieByCategory();
     }
 
     // implement the getMovieByDirector method
@@ -44,8 +46,7 @@ public class MovieController {
     @Path("/directors/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<MovieDTO> getMovieByDirector() {
-        return Arrays.asList(new MovieDTO(1, "The Godfather", 1972, 5),
-                new MovieDTO(2, "The Godfather: Part II", 1974, 5));
+        return movieService.getMovieByDirector();
     }
 
 }
