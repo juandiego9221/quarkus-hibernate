@@ -6,23 +6,32 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
+import lombok.extern.slf4j.Slf4j;
 import pe.com.jdmm21.dto.CategoryDTO;
 import pe.com.jdmm21.mapper.CategoryMapper;
 import pe.com.jdmm21.model.CategoryEntity;
 
+@Slf4j
 @ApplicationScoped
 public class CategoryService {
     @Inject
     CategoryMapper mapper;
+
+    @Inject
+    EntityManager em;
 
     // get All categories
     public List<CategoryDTO> getAllCategories() {
         List<CategoryDTO> dtos = new ArrayList<>();
 
         // list of categories entities
-        List<CategoryEntity> entities = Arrays.asList(new CategoryEntity(1, "Action", "Action movies"),
-                new CategoryEntity(2, "Comedy", "Comedy movies"));
+        List<CategoryEntity> entities = em.createQuery("SELECT c FROM CategoryEntity c", CategoryEntity.class)
+                .getResultList();
+
+        log.info("size: " + entities.size());
+        log.info(Arrays.toString(entities.toArray()));
 
         CategoryDTO dto = null;
         for (CategoryEntity categoryEntity : entities) {

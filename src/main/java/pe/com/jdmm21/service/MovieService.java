@@ -6,7 +6,9 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
+import lombok.extern.slf4j.Slf4j;
 import pe.com.jdmm21.dto.MovieDTO;
 import pe.com.jdmm21.mapper.MovieMapper;
 import pe.com.jdmm21.model.MovieEntity;
@@ -48,7 +50,8 @@ public class MovieService {
         List<MovieEntity> movieEntityList = em
                 .createQuery("SELECT m FROM MovieEntity m WHERE m.category.id = :categoryId",
                         MovieEntity.class)
-                .setParameter("categoryId", categoryId).getResultList();
+                .setParameter("categoryId", categoryId)
+                .getResultList();
 
         MovieDTO movieDTO;
 

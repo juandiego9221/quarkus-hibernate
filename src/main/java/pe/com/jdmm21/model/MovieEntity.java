@@ -34,8 +34,10 @@ public class MovieEntity {
      * La anotación @JoinColumn se utiliza para especificar la columna de la tabla
      * de la entidad MovieEntity que se utilizará para almacenar la clave externa de
      * la relación. En este caso, la columna se llama category_id.
+     * 
+     * Considerar que se debe asignar el nombre de la foranea , si se agrega otro valor se creara una nueva columna y eso hara que la busqueda devolvera vacio
      */
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "categoria_id")
     private CategoryEntity category;
 }
