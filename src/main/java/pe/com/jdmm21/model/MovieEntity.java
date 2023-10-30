@@ -40,4 +40,8 @@ public class MovieEntity {
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private CategoryEntity category;
+
+    @ManyToOne
+    @JoinColumn(name = "director_id")
+    private DirectorEntity director;
 }

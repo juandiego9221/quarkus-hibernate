@@ -44,12 +44,11 @@ public class MovieController {
         return movieService.getMovieByCategory(id);
     }
 
-    // implement the getMovieByDirector method
     @GET
-    @Path("/directors/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<MovieDTO> getMovieByDirector(String director) {
-        return movieService.getMovieByDirector(director);
+    @Path("/direc/{id}")
+    public List<MovieDTO> example222222(int id) {
+        return movieService.getMovieByDirector(id);
+
     }
 
     // implement the addStarsToMovie method
