@@ -2,6 +2,7 @@ package pe.com.jdmm21.service;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 
 import pe.com.jdmm21.dto.DirectorDTOResponse;
 import pe.com.jdmm21.mapper.DirectorMapper;
@@ -13,11 +14,15 @@ public class DirectorService {
     @Inject
     DirectorMapper mapper;
 
-    // geet director by id
-    public DirectorDTOResponse getDirectorById() {
-        DirectorEntity entity = new DirectorEntity(1, "James Cameron", "Canada", true);
+    @Inject
+    EntityManager em;
 
-        return mapper.toDTO(entity);
+    // geet director by id
+    public DirectorDTOResponse getDirectorById(int directorId) {
+        DirectorEntity directorEntity = em.createQuery("SELECT d FROM DirectorEntity d WHERE d.id = :id", DirectorEntity.class)
+                .setParameter("id", directorId).getSingleResult();
+
+        return mapper.toDTO(directorEntity);
     }
 
 }

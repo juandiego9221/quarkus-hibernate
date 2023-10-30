@@ -12,11 +12,12 @@ public class DirectorController {
     @Inject
     DirectorService directorService;
 
-    // implement the getDirectorById method
+
+
     @GET
     @Path("/{id}")
-    public DirectorDTOResponse getDirectorById() {
-        return directorService.getDirectorById();
+    public DirectorDTOResponse getDirectors(int id){
+        return directorService.getDirectorById(1);
     }
 
 }

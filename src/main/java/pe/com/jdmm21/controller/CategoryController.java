@@ -14,7 +14,6 @@ import pe.com.jdmm21.service.CategoryService;
 
 @Path("/categories")
 public class CategoryController {
-    // inject category service
     @Inject
     CategoryService categoryService;
 

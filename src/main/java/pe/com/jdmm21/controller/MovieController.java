@@ -5,7 +5,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -46,8 +45,8 @@ public class MovieController {
     }
 
     @GET
-    @Path("/direc/{id}")
-    public List<MovieDTOResponse> example222222(int id) {
+    @Path("/directors/{id}")
+    public List<MovieDTOResponse> getMovieByDirector(int id) {
         return movieService.getMovieByDirector(id);
 
     }
