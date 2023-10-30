@@ -84,11 +84,8 @@ public class MovieService {
     }
 
     @Transactional
-    // add stars to movie
     public void updateStarsInMovie(RatingDTORequest ratingDTORequest) {
-        // create a query to insert stars to movie
-        em.createQuery("UPDATE MovieEntity m SET m.stars = :stars WHERE m.id = :id",
-                MovieEntity.class)
+        em.createQuery("UPDATE MovieEntity m SET m.stars = :stars WHERE m.id = :id")
                 .setParameter("stars", ratingDTORequest.getPuntuation())
                 .setParameter("id", 1)
                 .executeUpdate();
