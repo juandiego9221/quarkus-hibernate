@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
 import lombok.extern.slf4j.Slf4j;
-import pe.com.jdmm21.dto.CategoryDTO;
+import pe.com.jdmm21.dto.CategoryDTOResponse;
 import pe.com.jdmm21.mapper.CategoryMapper;
 import pe.com.jdmm21.model.CategoryEntity;
 
@@ -23,8 +23,8 @@ public class CategoryService {
     EntityManager em;
 
     // get All categories
-    public List<CategoryDTO> getAllCategories() {
-        List<CategoryDTO> dtos = new ArrayList<>();
+    public List<CategoryDTOResponse> getAllCategories() {
+        List<CategoryDTOResponse> dtos = new ArrayList<>();
 
         // list of categories entities
         List<CategoryEntity> entities = em.createQuery("SELECT c FROM CategoryEntity c", CategoryEntity.class)
@@ -33,7 +33,7 @@ public class CategoryService {
         log.info("size: " + entities.size());
         log.info(Arrays.toString(entities.toArray()));
 
-        CategoryDTO dto = null;
+        CategoryDTOResponse dto = null;
         for (CategoryEntity categoryEntity : entities) {
             dto = mapper.toDTO(categoryEntity);
             dtos.add(dto);

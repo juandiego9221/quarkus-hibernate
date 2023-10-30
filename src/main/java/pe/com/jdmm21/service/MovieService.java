@@ -6,7 +6,10 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import pe.com.jdmm21.dto.MovieDTO;
+import javax.transaction.Transactional;
+
+import pe.com.jdmm21.dto.MovieDTOResponse;
+import pe.com.jdmm21.dto.RatingDTORequest;
 import pe.com.jdmm21.mapper.MovieMapper;
 import pe.com.jdmm21.model.MovieEntity;
 
@@ -18,13 +21,13 @@ public class MovieService {
     @Inject
     EntityManager em;
 
-    public List<MovieDTO> getAllMovies() {
-        List<MovieDTO> movieDTOList = new ArrayList<>();
+    public List<MovieDTOResponse> getAllMovies() {
+        List<MovieDTOResponse> movieDTOList = new ArrayList<>();
 
         List<MovieEntity> movieEntityList = em.createQuery("SELECT m FROM MovieEntity m",
                 MovieEntity.class).getResultList();
 
-        MovieDTO movieDTO;
+        MovieDTOResponse movieDTO;
 
         for (MovieEntity movieEntity : movieEntityList) {
             movieDTO = mapper.toDTO(movieEntity);
@@ -34,15 +37,15 @@ public class MovieService {
         return movieDTOList;
     }
 
-    public MovieDTO getMovieById(int id) {
+    public MovieDTOResponse getMovieById(int id) {
         MovieEntity movieEntity = em.createQuery("SELECT m FROM MovieEntity m WHERE m.id = :id", MovieEntity.class)
                 .setParameter("id", id).getSingleResult();
 
         return mapper.toDTO(movieEntity);
     }
 
-    public List<MovieDTO> getMovieByCategory(int categoryId) {
-        List<MovieDTO> movieDTOList = new ArrayList<>();
+    public List<MovieDTOResponse> getMovieByCategory(int categoryId) {
+        List<MovieDTOResponse> movieDTOList = new ArrayList<>();
 
         List<MovieEntity> movieEntityList = em
                 .createQuery("SELECT m FROM MovieEntity m WHERE m.category.id = :categoryId",
@@ -50,7 +53,7 @@ public class MovieService {
                 .setParameter("categoryId", categoryId)
                 .getResultList();
 
-        MovieDTO movieDTO;
+        MovieDTOResponse movieDTO;
 
         for (MovieEntity movieEntity : movieEntityList) {
             movieDTO = mapper.toDTO(movieEntity);
@@ -60,8 +63,8 @@ public class MovieService {
         return movieDTOList;
     }
 
-    public List<MovieDTO> getMovieByDirector(int directorId) {
-        List<MovieDTO> movieDTOList = new ArrayList<>();
+    public List<MovieDTOResponse> getMovieByDirector(int directorId) {
+        List<MovieDTOResponse> movieDTOList = new ArrayList<>();
 
         List<MovieEntity> movieEntityList = em
                 .createQuery("SELECT m FROM MovieEntity m WHERE m.director.id = :directorId",
@@ -69,7 +72,7 @@ public class MovieService {
                 .setParameter("directorId", directorId)
                 .getResultList();
 
-        MovieDTO movieDTO;
+        MovieDTOResponse movieDTO;
 
         for (MovieEntity movieEntity : movieEntityList) {
             movieDTO = mapper.toDTO(movieEntity);
@@ -80,15 +83,15 @@ public class MovieService {
 
     }
 
+    @Transactional
     // add stars to movie
-    public void addStarsToMovie() {
-        // mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 5));
-    }
-
-    // update stars to movie
-    public MovieDTO updateStarsToMovie() {
-        // return mapper.toDTO(new MovieEntity(1, "TheGodfather", 1972, 4));
-        return null;
+    public void updateStarsInMovie(RatingDTORequest ratingDTORequest) {
+        // create a query to insert stars to movie
+        em.createQuery("UPDATE MovieEntity m SET m.stars = :stars WHERE m.id = :id",
+                MovieEntity.class)
+                .setParameter("stars", ratingDTORequest.getPuntuation())
+                .setParameter("id", 1)
+                .executeUpdate();
     }
 
 }

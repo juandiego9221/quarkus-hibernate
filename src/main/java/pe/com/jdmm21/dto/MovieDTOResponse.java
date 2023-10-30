@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieDTO {
+public class MovieDTOResponse {
     private int id;
     private String name;
     private int year;

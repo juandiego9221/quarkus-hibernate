@@ -47,15 +47,6 @@ public class MovieControllerTest {
                 .statusCode(200);
     }
 
-    // test add stars to movie
-    @Test
-    void addStarsToMovie() {
-        given()
-                .when().post("/movies/1/stars/5")
-                .then()
-                .statusCode(201);
-    }
-
     // test update stars to movie
     @Test
     void updateStarsToMovie() {

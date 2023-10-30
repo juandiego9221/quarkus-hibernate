@@ -4,7 +4,7 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-import pe.com.jdmm21.dto.DirectorDTO;
+import pe.com.jdmm21.dto.DirectorDTOResponse;
 import pe.com.jdmm21.service.DirectorService;
 
 @Path("/directors")
@@ -15,7 +15,7 @@ public class DirectorController {
     // implement the getDirectorById method
     @GET
     @Path("/{id}")
-    public DirectorDTO getDirectorById() {
+    public DirectorDTOResponse getDirectorById() {
         return directorService.getDirectorById();
     }
 

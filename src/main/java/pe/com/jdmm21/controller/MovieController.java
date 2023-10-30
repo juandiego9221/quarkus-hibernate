@@ -12,7 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import lombok.extern.slf4j.Slf4j;
-import pe.com.jdmm21.dto.MovieDTO;
+import pe.com.jdmm21.dto.MovieDTOResponse;
+import pe.com.jdmm21.dto.RatingDTORequest;
 import pe.com.jdmm21.service.MovieService;
 
 @Slf4j
@@ -25,7 +26,7 @@ public class MovieController {
     // implement the getAllMovies method
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<MovieDTO> getAllMovies() {
+    public List<MovieDTOResponse> getAllMovies() {
         return movieService.getAllMovies();
     }
 
@@ -33,39 +34,31 @@ public class MovieController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public MovieDTO getMovieById(int id) {
+    public MovieDTOResponse getMovieById(int id) {
         return movieService.getMovieById(id);
     }
 
     @GET
     @Path("/categories/{id}")
-    public List<MovieDTO> example(int id) {
+    public List<MovieDTOResponse> example(int id) {
         log.info("xxxxx");
         return movieService.getMovieByCategory(id);
     }
 
     @GET
     @Path("/direc/{id}")
-    public List<MovieDTO> example222222(int id) {
+    public List<MovieDTOResponse> example222222(int id) {
         return movieService.getMovieByDirector(id);
 
     }
 
     // implement the addStarsToMovie method
-    @POST
-    @Path("/{id}/stars/{stars}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response addStarsToMovie() {
-        movieService.addStarsToMovie();
-        return Response.ok().status(201).build();
-    }
-
-    // implement the updateStarsToMovie method
     @PATCH
-    @Path("/{id}/stars/{stars}")
+    @Path("/{id}/stars")
     @Produces(MediaType.APPLICATION_JSON)
-    public MovieDTO updateStarsToMovie() {
-        return movieService.updateStarsToMovie();
+    public Response updateStarsToMovie(RatingDTORequest ratingDTORequest) {
+        movieService.updateStarsInMovie(ratingDTORequest);
+        return Response.ok().status(201).build();
     }
 
 }

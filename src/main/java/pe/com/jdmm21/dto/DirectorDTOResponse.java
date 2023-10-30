@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDTO {
-    private String categoryName;
-    private String clasification;
+public class DirectorDTOResponse {
+    private String name;
+    private String country;
+    private boolean hasOscar;
 }
