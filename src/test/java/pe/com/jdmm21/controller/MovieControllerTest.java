@@ -49,11 +49,11 @@ public class MovieControllerTest {
     }
 
     // test update stars to movie
-    @Disabled
+    @Disabled("Todavia estoy peleando con que no commitee al momento de hacer las pruebas")
     @Test
     void updateStarsToMovie() {
         given()
-                .when().patch("/movies/1/stars/5")
+                .when().patch("/movies/1/reviews")
                 .then()
                 .statusCode(200);
     }
