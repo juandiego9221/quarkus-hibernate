@@ -37,8 +37,4 @@
 
 Estos endpoints se centran más en la experiencia del usuario y en proporcionarle la información que probablemente querría ver o interactuar en una plataforma tipo Netflix.
 
-
-73 + 45 = 118
-100 + 226 = 326
-113 
-113 + 326 = 439
+## Considerar usar docker para poder correr el proyecto
